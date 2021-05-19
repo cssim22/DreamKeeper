@@ -1,4 +1,59 @@
-h1 {
-  font-family:'Times New Roman', Times, serif;
-  color: 'cyan';
+*{
+  margin: 0;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; 
+
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-left: auto;
+
+  background-color:#296e35;;
+  color:cyan
+  
+}
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; 
+
+  padding: 1.2em;
+  margin-left: auto;
+  
+}
+
+#logo{
+  font-family: 'Pattaya', sans-serif;
+  color:cyan;
+  font-size: 2em;
+}
+
+#app {
+  color:rgb(97, 167, 28);
+  font-family: 'poppins';
+  
+}
+
+body {
+  background-color: #dafdfd;
+
+}
+
+#dreamList {
+  background-color: #dafdfd;
+  color:rgb(97, 167, 28);
+  font-family: 'poppins';
+  font-size: 1.2em;
+  flex: 1, 1;
+
+}
+#dreamDisplay {
+  background-color: rgb(246, 255, 242);
+  color:rgb(97, 167, 28);
+  font-family: 'poppins';
+  font-size: 1.2em;
+  flex: 1, 1;
 }
