@@ -1,0 +1,50 @@
+{
+  "name": "DreamKeeper",
+  "version": "1.0.0",
+  "description": "This app will keep track of your dreams for you.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "webpack --env production",
+    "dev": "webpack serve --open --env development",
+    "gulp-prod": "node_modules/.bin/gulp prod",
+    "gulp-dev": "node_modules/.bin/gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cssim22/DreamKeeper.git"
+  },
+  "keywords": [],
+  "author": "Cameron Simmons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cssim22/DreamKeeper/"
+  },
+  "homepage": "https://github.com/cssim22/DreamKeeper#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^6.1.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.4",
+    "nodemon": "^2.0.7",
+    "sass": "^1.32.13",
+    "sass-loader": "^11.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
