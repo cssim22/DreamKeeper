@@ -93,7 +93,7 @@ class App extends Component {
           <div id="dreamDisplay">
             <DreamCreate newDream={this.newDream} name = "DreamCreate"></DreamCreate>
             <br/>
-            <DreamDisplay dreams = {this.state} name = "DreamDisplay"></DreamDisplay> 
+            <DreamDisplay dreams = {this.state.dreams[0]} name = "DreamDisplay"></DreamDisplay> 
           </div>
         </main>
       </div>
