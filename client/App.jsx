@@ -14,36 +14,19 @@ class App extends Component {
 
     this.state = {
       fetchedDreams: false,
-      dreams: []
+      dreams: [
+        {title:'Chased By Dog', detail: 'A big dog chased me.', label: 'nightmare'},
+        {title:'Chased By Giraffe', detail: 'A big giraffe chased me.', label: 'sexy'},
+        {title:'Able To Fly', detail: 'I flew to Mars and rode on a rover', label: 'fun'}
+      ]
     }
     this.newDream = this.newDream.bind(this);
   }
   
   componentDidMount(){
-    // //method to fetch th edreams from teh database and put in state
-    // fetch('/api/')
-    // .then(res => {
-    //  console.log('response from api fetch', res);
-    //  res.json()
-    // })
-    // .then((dreams) => {
-    //  if (!Array.isArray(dreams)) dreams = [];
-    //  return this.setState({
-    //    dreams,
-    //    fetchedDreams: true
-    //  });
-    // })
-    // .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err));
-  }
-  
-
-  newDream(e){
-    console.log(e);
+    //method to fetch th edreams from teh database and put in state
     fetch('/api/')
-    .then(res => {
-     console.log('response from api fetch', res);
-     res.json()
-    })
+    .then(res => res.json())
     .then((dreams) => {
      if (!Array.isArray(dreams)) dreams = [];
      return this.setState({
@@ -52,6 +35,30 @@ class App extends Component {
      });
     })
     .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err));
+  }
+  
+
+  newDream(e){
+    console.log(e);
+    fetch('/dream',{
+      method:'POST',
+      headers: {
+        'Content-Type': "Application/JSON"
+      },
+      body: JSON.stringify(body)
+    })
+      .then(res => {
+      console.log('response from api fetch', res);
+      res.json()
+      })
+      .then((dreams) => {
+      if (!Array.isArray(dreams)) dreams = [];
+      return this.setState({
+        dreams,
+        fetchedDreams: true
+      });
+      })
+      .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err));
   }
 
   render() {
@@ -76,18 +83,17 @@ class App extends Component {
           <div id="logo">
             <h1>DreamKeeper</h1>
           </div>
-          <h1>ABC</h1>
         </header>
 
         <main>
-          <div id="dreamList" class ="column">
-            <DreamList name = "DreamList"></DreamList> 
+          <div id="dreamList">
+            <DreamList dreams = {this.state.dreams} name = "DreamList"></DreamList> 
           </div>
 
-          <div id="dreamDisplay" class = 'column'>
+          <div id="dreamDisplay">
             <DreamCreate newDream={this.newDream} name = "DreamCreate"></DreamCreate>
             <br/>
-            <DreamDisplay name = "DreamDisplay"></DreamDisplay> 
+            <DreamDisplay dreams = {this.state} name = "DreamDisplay"></DreamDisplay> 
           </div>
         </main>
       </div>

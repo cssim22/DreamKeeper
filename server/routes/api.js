@@ -11,7 +11,7 @@ router.get('/',
 
 router.post('/dream',
   dreamController.addDream,
-  (req, res) => res.status(200).json({})
+  (req, res) => res.status(200).json(req.locals.dreams)
 );
 
 // router.put('/dream',

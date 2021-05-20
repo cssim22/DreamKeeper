@@ -22,7 +22,7 @@ dreamController.addDream = (req, res, next) => {
   
   models.Dream.create({req})
   .then((data) =>{
-      
+    console.log(res)
     res.locals.dreams = data;
     return next();
     })

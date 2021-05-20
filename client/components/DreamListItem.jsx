@@ -2,32 +2,17 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 
 
-class DreamListItem extends React.Component {
-
-  componentDidMount(){
-    // fetch('/api/')
-    //   .then(res => res.json())
-    //   .then(dreams =>{
-
-    //   })
-  }
+class DreamListItem extends Component {
 
   render(){
-
-
+    console.log('this.props in dreamlistitem',this.props)
     return(
-      <DreamListItem
-        key = {i}
-        info = {dream}
-      />
+      <div>
+        <h3>{this.props.number}. {this.props.dream}</h3>
+      </div>
     );
   }
 
 }
 
-// const DreamList = props => {
-//   <div className="dreamList">
-//     dreamList
-//   </div>
-// }
 export default DreamListItem;

@@ -1,36 +1,26 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-//import DreamListItem from './DreamListItem'
+import DreamListItem from './DreamListItem.jsx'
 
-class DreamList extends React.Component {
+class DreamList extends Component {
 
-
-
-  // componentDidMount(){
-  //   fetch('/api/')
-  //     .then(res => res.json())
-  //     .then(dreams =>{
-
-  //     })
-  // }
 
   render(){
 
+    const dreamsList = [];
 
+    console.log('this is props is dreamlist',this.props);
+    for(let i = 0; i < 3; i++ ){
+      dreamsList.push(<DreamListItem key={i} number={i+1} dream={this.props.dreams[i].title}></DreamListItem>)
+    }
+    console.log('this is dreamsList', dreamsList)
     return(
-      <h1>{this.props.name}kjhk</h1>
-      // <DreamListItem
-      //   key = {i}
-      //   info = {dream}
-      // />
+      <div>
+        {dreamsList}
+      </div>
     );
   }
 
 }
 
-// const DreamList = props => {
-//   <div className="dreamList">
-//     dreamList
-//   </div>
-// }
 export default DreamList;

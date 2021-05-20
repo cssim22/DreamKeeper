@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 
 class DreamCreate extends Component {
+  
   render(){
     return(
       <div>
-        <form onSubmit ={this.newDream}>
+        <form onSubmit ={this.dreamSubmit}>
           <label>Dream Title:</label>
           <input name = "title" />
           <br/>
