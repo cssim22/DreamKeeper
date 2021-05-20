@@ -7,9 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "nodemon server/server.js",
     "build": "webpack --env production",
-    "dev": "webpack serve --open --env development",
+    "dev": "webpack serve --open --env development & nodemon server/server.js",
     "gulp-prod": "node_modules/.bin/gulp prod",
     "gulp-dev": "node_modules/.bin/gulp dev"
   },

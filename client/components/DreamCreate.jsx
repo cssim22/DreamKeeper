@@ -4,9 +4,10 @@ import { render } from "react-dom";
 class DreamCreate extends Component {
   
   render(){
+    // console.log('dreamSubmit in dreamcreate',this.props.dreamSubmit)
     return(
       <div>
-        <form onSubmit ={this.dreamSubmit}>
+        <form onSubmit ={this.props.dreamSubmit}>
           <label>Dream Title:</label>
           <input name = "title" />
           <br/>

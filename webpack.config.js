@@ -9,8 +9,8 @@ module.exports = (env) => {
 		},
 		mode: env.production ? "production" : "development",
 		devServer: {
-			publicPath: "/build/",
-			proxy: { "/api/": "http://localhost:3000" },
+			publicPath: "/build",
+			proxy: { "/api": "http://localhost:3000" },
 		},
 
 		module: {

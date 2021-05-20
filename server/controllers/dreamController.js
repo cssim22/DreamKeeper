@@ -5,8 +5,6 @@ const dreamController = {};
 dreamController.getDreams = (req, res, next) => {
   console.log('req keys in dreamController.getDreams:',Object.keys(req));
   
-  
-
   models.Dream.find({})
     .then((data) =>{
       res.locals.dreams = data;

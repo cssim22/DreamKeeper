@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       fetchedDreams: false,
       dreams: [
-        {title:'Chased By Dog', detail: 'A big dog chased me.', label: 'nightmare'},
+        {title:'Chased By Cat', detail: 'A big dog chased me.', label: 'nightmare'},
         {title:'Chased By Giraffe', detail: 'A big giraffe chased me.', label: 'sexy'},
         {title:'Able To Fly', detail: 'I flew to Mars and rode on a rover', label: 'fun'}
       ]
@@ -24,22 +24,23 @@ class App extends Component {
   }
   
   componentDidMount(){
-    //method to fetch th edreams from teh database and put in state
-    fetch('/api/')
-    .then(res => res.json())
-    .then((dreams) => {
-     if (!Array.isArray(dreams)) dreams = [];
-     return this.setState({
-       dreams,
-       fetchedDreams: true
-     });
-    })
-    .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err));
+    //method to fetch the dreams from teh database and put in state
+    // fetch('/api')
+    // .then(res => res.json())
+    // .then(dreams => {
+    //   console.log('dreams in componentdidmount',dreams)
+    //   if (!Array.isArray(dreams)) dreams = [];  
+    //   return this.setState({
+    //       dreams,
+    //       fetchedDreams: true
+    //  })
+    // })
+    // .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err))
   }
   
 
   newDream(e){
-    console.log(e);
+    console.log('this is e in newdream',e);
     fetch('/dream',{
       method:'POST',
       headers: {
@@ -91,7 +92,7 @@ class App extends Component {
           </div>
 
           <div id="dreamDisplay">
-            <DreamCreate newDream={this.newDream} name = "DreamCreate"></DreamCreate>
+            <DreamCreate dreamSubmit={this.newDream} name = "DreamCreate"></DreamCreate>
             <br/>
             <DreamDisplay dreams = {this.state.dreams[0]} name = "DreamDisplay"></DreamDisplay> 
           </div>
