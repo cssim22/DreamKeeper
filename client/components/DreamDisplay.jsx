@@ -4,7 +4,6 @@ import { render } from "react-dom";
 
 class DreamDisplay extends Component {   
   render(){
-    console.log('this is props in display',this.props)
     return(
     <div className="dreamDisplay">
       <h1>{this.props.dreams.title}</h1>

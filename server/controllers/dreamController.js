@@ -5,6 +5,8 @@ const dreamController = {};
 dreamController.getDreams = (req, res, next) => {
   console.log('req keys in dreamController.getDreams:',Object.keys(req));
   
+  
+
   models.Dream.find({})
     .then((data) =>{
       res.locals.dreams = data;
@@ -20,10 +22,12 @@ dreamController.getDreams = (req, res, next) => {
 dreamController.addDream = (req, res, next) => {
   console.log('req keys in dreamController.addDream:',Object.keys(req))
   
-  models.Dream.create({req})
+  const {title, detail, label} = req.body;
+
+  models.Dream.create({title, detail, label})
   .then((data) =>{
     console.log(res)
-    res.locals.dreams = data;
+    res.status(200).send({data});
     return next();
     })
     .catch((err) =>next({
