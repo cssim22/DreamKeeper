@@ -15,6 +15,7 @@ class DreamList extends Component {
       <DreamListItem 
       key={i} 
       number={i+1} 
+      id={i}
       pickDream={this.props.pickDream}  
       dream={this.props.dreams[i].title}>
       </DreamListItem>)

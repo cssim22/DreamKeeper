@@ -14,7 +14,7 @@ class DreamCreate extends Component {
 					<br />
 					<label>Dream Description:</label>
 					<br />
-					<textarea name="details" rows="20" cols="50"/>
+					<textarea name="details" rows="15" cols="50"/>
 					<br />
           <label>Dream Type:</label>
 					<br />

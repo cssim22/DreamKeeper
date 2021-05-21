@@ -20,6 +20,7 @@ class App extends Component {
     }
 
     this.submitDream = this.submitDream.bind(this);
+    this.pickDream = this.pickDream.bind(this);
   }
   
   componentDidMount(){
@@ -40,7 +41,7 @@ class App extends Component {
 
   submitDream(event){
     event.preventDefault();
-    console.log('this is e in newdream',event.target[0].value);
+    
     const body = {
       title: event.target[0].value,
       detail: event.target[1].value,
@@ -55,11 +56,9 @@ class App extends Component {
       body: JSON.stringify(body)
     })
     .then(res => {
-      console.log('response from api fetch', res);
       res.json()
     })
     .then((dreams) => {
-      console.log('this is dreams in newDream event handler',dreams)
       if (!Array.isArray(dreams)) dreams = [];
       return this.setState({
         dreams,
@@ -68,13 +67,12 @@ class App extends Component {
     })
     .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err));
   }
-  
+  //event.target.__reactProps$oz90u59y2b.children
   pickDream(event){
     event.preventDefault();
-    console.log('this is the event in the pickDream event',event.target)
+    console.log('this is the event in the pickDream event',event.target.firstChild.textContent)
     return this.setState({
-      ...this.state,
-      chosen: event.target
+      chosen: Number(event.target.firstChild.textContent)-1
     })
 
   }
