@@ -3,7 +3,7 @@ const models = require('../models/dreamModels');
 const dreamController = {};
 
 dreamController.getDreams = (req, res, next) => {
-  console.log('req keys in dreamController.getDreams:',Object.keys(req));
+  // console.log('req keys in dreamController.getDreams:',Object.keys(req));
   
   models.Dream.find({})
     .then((data) =>{
@@ -18,13 +18,12 @@ dreamController.getDreams = (req, res, next) => {
 
 
 dreamController.addDream = (req, res, next) => {
-  console.log('req keys in dreamController.addDream:',Object.keys(req))
+  console.log('req keys in dreamController.addDream:',req.body)
   
   const {title, detail, label} = req.body;
 
   models.Dream.create({title, detail, label})
   .then((data) =>{
-    console.log(res)
     res.status(200).send({data});
     return next();
     })

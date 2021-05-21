@@ -6,11 +6,18 @@ class DreamList extends Component {
 
 
   render(){
-
+    // console.log('this is props in dreamlist',this.props)
+    
     const dreamsList = [];
 
-    for(let i = 0; i < 3; i++ ){
-      dreamsList.push(<DreamListItem key={i} number={i+1} dream={this.props.dreams[i].title}></DreamListItem>)
+    for(let i = 0; i < this.props.dreams.length; i++ ){
+      dreamsList.push(
+      <DreamListItem 
+      key={i} 
+      number={i+1} 
+      pickDream={this.props.pickDream}  
+      dream={this.props.dreams[i].title}>
+      </DreamListItem>)
     }
    
     return(

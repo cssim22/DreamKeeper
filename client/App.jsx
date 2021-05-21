@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import PropTypes from 'prop-types';
 
 import DreamList from './components/DreamList.jsx';
 import DreamCreate from './components/DreamCreate.jsx';
@@ -14,69 +15,86 @@ class App extends Component {
 
     this.state = {
       fetchedDreams: false,
-      dreams: [
-        {title:'Chased By Cat', detail: 'A big dog chased me.', label: 'nightmare'},
-        {title:'Chased By Giraffe', detail: 'A big giraffe chased me.', label: 'sexy'},
-        {title:'Able To Fly', detail: 'I flew to Mars and rode on a rover', label: 'fun'}
-      ]
+      dreams: [],
+      chosen: 7
     }
-    this.newDream = this.newDream.bind(this);
+
+    this.submitDream = this.submitDream.bind(this);
   }
   
   componentDidMount(){
     //method to fetch the dreams from teh database and put in state
-    // fetch('/api')
-    // .then(res => res.json())
-    // .then(dreams => {
-    //   console.log('dreams in componentdidmount',dreams)
-    //   if (!Array.isArray(dreams)) dreams = [];  
-    //   return this.setState({
-    //       dreams,
-    //       fetchedDreams: true
-    //  })
-    // })
-    // .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err))
+    fetch('/api')
+    .then(res => res.json())
+    .then(dreams => {
+      console.log('dreams in componentdidmount',dreams)
+      if (!Array.isArray(dreams)) dreams = [];  
+      this.setState({
+          dreams,
+          fetchedDreams: true
+     })
+    })
+    .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err))
   }
   
 
-  newDream(e){
-    console.log('this is e in newdream',e);
-    fetch('/dream',{
+  submitDream(event){
+    event.preventDefault();
+    console.log('this is e in newdream',event.target[0].value);
+    const body = {
+      title: event.target[0].value,
+      detail: event.target[1].value,
+      label: event.target[2].value
+    };
+    console.log(body)
+    fetch('/api/dream',{
       method:'POST',
       headers: {
         'Content-Type': "Application/JSON"
       },
       body: JSON.stringify(body)
     })
-      .then(res => {
+    .then(res => {
       console.log('response from api fetch', res);
       res.json()
-      })
-      .then((dreams) => {
+    })
+    .then((dreams) => {
+      console.log('this is dreams in newDream event handler',dreams)
       if (!Array.isArray(dreams)) dreams = [];
       return this.setState({
         dreams,
         fetchedDreams: true
       });
-      })
-      .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err));
+    })
+    .catch(err => console.log('App.componentDidMount fetch dreams: ERROR: ', err));
+  }
+  
+  pickDream(event){
+    event.preventDefault();
+    console.log('this is the event in the pickDream event',event.target)
+    return this.setState({
+      ...this.state,
+      chosen: event.target
+    })
+
   }
 
   render() {
-    
-    // if (!this.state.fetchedDreams) return (
-    //   <div>
-    //     <h1>Loading dreams... </h1>
-    //   </div>
-    // );
+    if (!this.state.fetchedDreams) return (
+      <div>
+        <h1>Loading dreams... </h1>
+      </div>
+    );
 
-    // const { dreams } = this.state;
+    const { dreams } = this.state;
     
-    // if (!dreams) return null;
+    if (!dreams) return null;
 
-    // if (!dreams.length) return (
-    //   <div>Sorry, no dreams found</div>
-    // );
+    if (!dreams.length) return (
+      <div>Sorry, no dreams found</div>
+    );
+   
+    const {chosen} = this.state;
 
     return (
       <div id="app">
@@ -88,13 +106,13 @@ class App extends Component {
 
         <main>
           <div id="dreamList">
-            <DreamList dreams = {this.state.dreams} name = "DreamList"></DreamList> 
+            <DreamList dreams = {this.state.dreams} pickDream = {this.pickDream} name = "DreamList"></DreamList> 
           </div>
 
           <div id="dreamDisplay">
-            <DreamCreate dreamSubmit={this.newDream} name = "DreamCreate"></DreamCreate>
+            <DreamCreate onSubmit={this.submitDream} name = "DreamCreate"></DreamCreate>
             <br/>
-            <DreamDisplay dreams = {this.state.dreams[0]} name = "DreamDisplay"></DreamDisplay> 
+            <DreamDisplay dreams = {this.state.dreams[chosen]} name = "DreamDisplay"></DreamDisplay> 
           </div>
         </main>
       </div>

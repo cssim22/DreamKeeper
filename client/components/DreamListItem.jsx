@@ -6,8 +6,9 @@ class DreamListItem extends Component {
 
   render(){
     return(
-      <div>
+      <div onClick={this.props.pickDream}>
         <h3>{this.props.number}. {this.props.dream}</h3>
+        <hr/>
       </div>
     );
   }
