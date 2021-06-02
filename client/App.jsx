@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
-import PropTypes from 'prop-types';
+// import { render } from "react-dom";
+// import PropTypes from 'prop-types';
 
 import DreamList from './components/DreamList.jsx';
 import DreamCreate from './components/DreamCreate.jsx';
