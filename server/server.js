@@ -7,7 +7,7 @@ const PORT = 3000;
 
 
 //handle parsing the request body
-app.use('/',express.json());
+app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // handle requests for static files

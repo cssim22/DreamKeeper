@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGO_URI = 'mongodb+srv://cssim22:password2222@cluster0.bogtj.mongodb.net/dreams?retryWrites=true&w=majority';
+const MONGO_URI = 'mongodb+srv://cssim22:crocodile@cluster0.bogtj.mongodb.net/dreams?retryWrites=true&w=majority';
 
 mongoose.connect(MONGO_URI,{
   // options for the connect method to parse the URI

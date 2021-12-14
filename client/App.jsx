@@ -24,7 +24,7 @@ class App extends Component {
   }
   
   componentDidMount(){
-    //method to fetch the dreams from teh database and put in state
+    //method to fetch the dreams from the database and put in state
     fetch('/api')
     .then(res => res.json())
     .then(dreams => {
