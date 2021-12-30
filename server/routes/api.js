@@ -15,8 +15,6 @@ router.post('/dream',
   (req, res) => res.sendStatus(200)
 );
 
-
-
 // router.put('/dream',
 //   dreamController.editDream,
 //   (req, res) => res.status(200).json({})
